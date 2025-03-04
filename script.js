@@ -1,16 +1,19 @@
-const containerDiv = document.querySelector("#container");
+document.addEventListener("DOMContentLoaded", function(){
+    createBoard(32);
+    console.log ("hi")
+})
 
-function makeRows (rows, columns) {
-    containerDiv.style.setProperty("--grid-rows", rows);
-    containerDiv.style.setProperty("--grid columns", columns);
-    console.log(containerDiv);
-    console.log(rows);
-    console.log(columns);
-    for (i = 0; i < (rows * columns); i++) {
-        let square = document.createElement("div");
-        square.innerText = (i + 1);
-        containerDiv.appendChild(square).className = "grid-item";
+function createBoard(size){
+    let board = document.querySelector(".board");
+
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    let numDivs = size + size;
+
+    for(let i = 0; i < numDivs; i++){
+        let div = document.createElement("div");
+        board.insertAdjacentElement("beforeend", div);
     }
+    
 }
-
-makeRows(16, 16);
